@@ -6,8 +6,10 @@ import './App.css';
 class App extends Component {
   constructor(){
     super();
+
     this.state = {
-      monsters: []
+      monsters: [],
+      searchField: ''
     };
   }
   // accessing from the component and fetching from a link with data
@@ -19,6 +21,12 @@ class App extends Component {
   render(){
     return (
       <div className="App">
+        <input 
+          type='search' 
+          placeholder='search monsters' 
+          onChange={ e => 
+            this.setState({ serchField: e.target.value })}
+        />
       <CardList monsters={this.state.monsters} />
         
       </div>
