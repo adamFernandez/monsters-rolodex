@@ -12,6 +12,7 @@ class App extends Component {
       monsters: [],
       searchField: ''
     };
+    
   }
   // accessing from the component and fetching from a link with data
   componentDidMount() {
@@ -19,6 +20,11 @@ class App extends Component {
     .then(response => response.json())
     .then(users => this.setState({ monsters: users}))
   }
+
+  handleChange(e) {
+    this.setState({ searchField: e.target.value})
+  }
+
   render(){
     const { monsters, searchField } = this.state;
     const filteredMonsters = monsters.filter(monster =>
@@ -29,7 +35,7 @@ class App extends Component {
       <div className="App">
       <SearchBox 
         placeholder='search monsters'
-        handleChange={e => this.setState({ searchField: e.target.value})}
+        handleChange={this.handleChange }
       />
       <CardList monsters={filteredMonsters} />
         
