@@ -12,7 +12,7 @@ class App extends Component {
       monsters: [],
       searchField: ''
     };
-    
+
   }
   // accessing from the component and fetching from a link with data
   componentDidMount() {
@@ -20,8 +20,8 @@ class App extends Component {
     .then(response => response.json())
     .then(users => this.setState({ monsters: users}))
   }
-
-  handleChange(e) {
+  // automaticaly bind the context of the method to the constructor with an arrow function
+  handleChange = (e) => {
     this.setState({ searchField: e.target.value})
   }
 
@@ -33,6 +33,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <h1>Monster Rolodex</h1>
       <SearchBox 
         placeholder='search monsters'
         handleChange={this.handleChange }
